@@ -1,7 +1,13 @@
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
+<?php
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetMedika</title>
 
     <style>
@@ -16,6 +22,19 @@
         background: #f2f2f2;
       }
 
+      /* ANIMASI MASUK HALAMAN */
+      body {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.6s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
       /* CONTAINER */
       .container {
         display: flex;
@@ -40,7 +59,7 @@
       }
 
       .logo img {
-        width: 70px;
+        width: 200px;
       }
 
       .logo h2 {
@@ -166,14 +185,13 @@
       <!-- SIDEBAR -->
       <div class="sidebar">
         <div class="logo">
-          <img src="logo.png" />
-          <h2>PetMedika</h2>
+          <img src="image/logopet.png" />
         </div>
 
         <div class="menu">
-          <a class="active">Ambil <br />Antrian</a>
-          <a>Daftar <br />Antrian</a>
-          <a>Kartu <br />Antrian</a>
+      <a class="active"href="antrian.php">Ambil <br>Antrian</a>
+      <a href="daftar-antrian.php">Daftar <br>Antrian</a>
+      <a href="kartu-antrian.php">Kartu <br>Antrian</a>
         </div>
       </div>
 
