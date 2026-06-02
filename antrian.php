@@ -9,6 +9,7 @@ $result = mysqli_query($conn, $query);
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PetMedika</title>
 <link rel="stylesheet" href="style-pet.css">
 </head>
@@ -18,7 +19,7 @@ $result = mysqli_query($conn, $query);
 
   <div class="sidebar">
     <div class="logo">
-      <img src="image/logopet.png">
+      <img src="image/logopet.png" alt="Logo PetMedika">
     </div>
 
     <div class="menu">
@@ -28,13 +29,15 @@ $result = mysqli_query($conn, $query);
     </div>
   </div>
 
-  <div class="main">
+  <div class="main clean-main">
     <div class="title">
       <h1>Welcome To <br><span>PetMedika</span></h1>
       <p class="subtitle">Solusi Kesehatan Hewan Terpercaya</p>
     </div>
 
     <form class="form" method="POST" action="action-ambil-antrian.php">
+      <img class="form-logo" src="image/logopet.png" alt="Logo PetMedika">
+
       <input type="text" name="no_telp" placeholder="Masukkan No. Telp Anda">
 
       <select name="service_id">
@@ -48,10 +51,6 @@ $result = mysqli_query($conn, $query);
 
       <button class="btn">Ambil Antrian</button>
     </form>
-
-    <div class="illustration">
-      <img src="pet-illustration.png">
-    </div>
   </div>
 
 </div>
