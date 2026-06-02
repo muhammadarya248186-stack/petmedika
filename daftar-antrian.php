@@ -18,6 +18,7 @@ if(!$q){
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daftar Antrian</title>
 <link rel="stylesheet" href="style-pet.css">
 <meta http-equiv="refresh" content="5">
@@ -29,12 +30,12 @@ if(!$q){
 
   <div class="sidebar">
     <div class="logo">
-      <img src="image/logopet.png">
+      <img src="image/logopet.png" alt="Logo PetMedika">
     </div>
 
     <div class="menu">
       <a href="antrian.php">Ambil <br>Antrian</a>
-      <a class="active" href="#">Daftar <br>Antrian</a>
+      <a class="active" href="daftar-antrian.php">Daftar <br>Antrian</a>
       <a href="kartu-antrian.php">Kartu <br>Antrian</a>
     </div>
   </div>
@@ -43,6 +44,7 @@ if(!$q){
 
     <div class="title">
       <h1>Daftar <span>Antrian</span></h1>
+      <p class="subtitle">Data antrian hari ini diperbarui otomatis</p>
     </div>
 
     <div class="cards">
@@ -59,8 +61,27 @@ if(!$q){
               <?= $row['prefix']; ?>-<?= str_pad($row['queue_number'], 2, '0', STR_PAD_LEFT); ?>
             </div>
 
-            <div class="status">
-              <?= $row['status'] == 'waiting' ? 'Menunggu' : $row['status']; ?>
+            <?php
+              $status = strtolower($row['status']);
+              if ($status == 'waiting') {
+                $statusText = 'Menunggu';
+                $statusClass = 'waiting';
+              } elseif ($status == 'called' || $status == 'dipanggil') {
+                $statusText = 'Dipanggil';
+                $statusClass = 'called';
+              } elseif ($status == 'done' || $status == 'selesai') {
+                $statusText = 'Selesai';
+                $statusClass = 'done';
+              } elseif ($status == 'cancelled' || $status == 'canceled' || $status == 'batal') {
+                $statusText = 'Dibatalkan';
+                $statusClass = 'cancelled';
+              } else {
+                $statusText = ucfirst($status);
+                $statusClass = 'waiting';
+              }
+            ?>
+            <div class="status <?= $statusClass; ?>">
+              <?= $statusText; ?>
             </div>
           </div>
 
@@ -75,9 +96,6 @@ if(!$q){
 
     </div>
 
-    <div class="illustration">
-      <img src="pet-illustration.png">
-    </div>
 
   </div>
 </div>
